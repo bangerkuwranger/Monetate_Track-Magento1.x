@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Monetate_Track</name>
+    <version>1.0.1</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License (OSL 3.0)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Track data and export product feed to Monetate.</summary>
+    <description>Module for Monetate allows to use an event handler which adds a tracking script for each page. This handler will add methods with parameters, based on current location, actions, to a global object. An XML data feed will be created to send product data to Monetate.</description>
+    <notes>Changed functionality to move Monetate Tag script before other scripts</notes>
+    <authors><author><name>One Pica Inc</name><user>onepica</user><email>hello@onepica.com</email></author></authors>
+    <date>2015-03-23</date>
+    <time>13:06:46</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="Monetate_Track.xml" hash="77fdaa45fa4dffc3a647e5c6333f7928"/></dir></target><target name="magecommunity"><dir name="Monetate"><dir name="Track"><dir name="Block"><file name="Abstract.php" hash="911a0fa14cb1e1f3a6fdc56c0c5c9c06"/><file name="AddCartRows.php" hash="6a08041e8bebca833700933edd2bde2e"/><file name="Init.php" hash="4c8472c095122d5d81ae525512d9f626"/><file name="TrackData.php" hash="ce3daf34f9bb7f6cffd91302bbc6bfbf"/></dir><dir name="Helper"><file name="Data.php" hash="4334045b99767810e06f15a9340dc6e3"/></dir><dir name="Model"><dir name="Adminhtml"><file name="ExportProductFeed.php" hash="14499d5b5fe519964ddd0ee089749b8c"/></dir><file name="Observer.php" hash="73bc971260e79c27bcaa95587c7dab66"/><dir name="PageCache"><file name="Container.php" hash="5a3d9eb378ee32e330fd27a04eeda6cd"/></dir><file name="ProductFeed.php" hash="e4c5d809995610aaf0671d7714b5bdb1"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="ProductfeedController.php" hash="90c6260b6876642bdd3751b29135877d"/><dir name="Sftp"><file name="ConnectionController.php" hash="ff832620ecb82e5ae521330db13e99c5"/></dir></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="1cfb36d0e5926bea3142b6dde6d17548"/><file name="cache.xml" hash="cfb5e864f98d8a3df24c650b2c954ae0"/><file name="config.xml" hash="6140d986d19e523c907a35f29bb7bde7"/><file name="system.xml" hash="9a664d77bc9026d4bae8b167bcfe24e9"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="monetate"><file name="track.xml" hash="b64f6ef6ce1ddd9b1ada86292ebbfd0a"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>5.5.6</max></php><package><name>Mage_Core_Modules</name><channel>community</channel><min>1.5</min><max>1.8</max></package><package><name>Mage_Core_Modules</name><channel>enterprise</channel><min>1.12</min><max>1.14</max></package></required></dependencies>
+</package>

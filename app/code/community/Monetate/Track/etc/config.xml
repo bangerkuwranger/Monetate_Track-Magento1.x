@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Monetate
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@monetate.com so we can send you a copy immediately.
+ *
+ * @category Monetate
+ * @package Monetate_Track
+ * @copyright Copyright (c) 2014 Monetate, Inc. All rights reserved. (http://www.monetate.com)
+ * @license  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Monetate_Track>
+            <version>1.0.1</version>
+        </Monetate_Track>
+    </modules>
+    <global>
+        <blocks>
+            <monetate_track>
+                <class>Monetate_Track_Block</class>
+            </monetate_track>
+        </blocks>
+        <helpers>
+            <monetate_track>
+                <class>Monetate_Track_Helper</class>
+            </monetate_track>
+        </helpers>
+        <models>
+            <monetate_track>
+                <class>Monetate_Track_Model</class>
+            </monetate_track>
+        </models>
+    </global>
+    <admin>
+        <routers>
+            <monetate_track>
+                <use>admin</use>
+                <args>
+                    <frontName>monetate_track</frontName>
+                    <module>Monetate_Track</module>
+                </args>
+            </monetate_track>
+        </routers>
+    </admin>
+    <frontend>
+        <events>
+			<core_block_abstract_to_html_after>
+                <observers>
+                    <monetate_track_observer>
+                        <type>singleton</type>
+                        <class>monetate_track/observer</class>
+                        <method>observeBlockShowing</method>
+                    </monetate_track_observer>
+                </observers>
+            </core_block_abstract_to_html_after>
+            <catalog_block_product_list_collection>
+                <observers>
+                    <monetate_track_product_list>
+                        <type>singleton</type>
+                        <class>monetate_track/observer</class>
+                        <method>observeProductListCollection</method>
+                    </monetate_track_product_list>
+                </observers>
+            </catalog_block_product_list_collection>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <monetate_track_order_success>
+                        <class>monetate_track/observer</class>
+                        <method>observeOrderSuccess</method>
+                    </monetate_track_order_success>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <monetate_track_order_success>
+                        <class>monetate_track/observer</class>
+                        <method>observeOrderSuccess</method>
+                    </monetate_track_order_success>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+        </events>
+        <layout>
+            <updates>
+                <monetate_track>
+                    <file>monetate/track.xml</file>
+                </monetate_track>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <monetate>
+            <configuration>
+                <monetate_enable_tracking>0</monetate_enable_tracking>
+            </configuration>
+            <export>
+                <monetate_product_feed_enable_cron>0</monetate_product_feed_enable_cron>
+                <monetate_sftp_host>sftp.monetate.net</monetate_sftp_host>
+                <monetate_sftp_port>22</monetate_sftp_port>
+                <monetate_sftp_timeout>10</monetate_sftp_timeout>
+            </export>
+        </monetate>
+    </default>
+    <crontab>
+        <jobs>
+            <monetate_product_feed_export>
+                <schedule>
+                    <cron_expr>0 1 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>monetate_track/productFeed::export</model>
+                </run>
+            </monetate_product_feed_export>
+        </jobs>
+    </crontab>
+</config>
